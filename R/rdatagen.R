@@ -42,7 +42,7 @@
 #rdatagen(10,Q=4,probs=probs)
 
 #########################################################
-rdatagen <- function(n=100,R=diag(1,2),Q=NULL,th=NULL,probs=NULL) {
+rdatagen <- function(n=100,R=diag(1,2),Q=NULL,th=NULL,probs=NULL,tol=1e-06) {
   
   ## controlli probs  aggiunto 29/10/2014
   if (!is.null(probs)) {
@@ -113,7 +113,7 @@ rdatagen <- function(n=100,R=diag(1,2),Q=NULL,th=NULL,probs=NULL) {
   }
 
   ## dati continui
-  X <- mvrnorm(n,rep(0,ncol(R)),R)
+  X <- mvrnorm(n,rep(0,ncol(R)),R,tol=tol)
 
   ### discretizzazione
   Dx <- X
